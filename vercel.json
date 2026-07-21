@@ -1,0 +1,14 @@
+{
+  "buildCommand": "cd client && npm install && npx vite build && cd ../server && node bundle.js",
+  "outputDirectory": "client/dist",
+  "installCommand": "cd client && npm install && cd ../server && npm install",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" }
+  ],
+  "functions": {
+    "api/chat.js": { "memory": 512, "maxDuration": 60 },
+    "api/speech.js": { "memory": 512, "maxDuration": 60 },
+    "api/mistakes.js": { "memory": 256, "maxDuration": 10 },
+    "api/health.js": { "memory": 128, "maxDuration": 5 }
+  }
+}
