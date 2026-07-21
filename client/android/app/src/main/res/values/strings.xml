@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">销售AI陪练</string>
+    <string name="title_activity_main">销售AI陪练</string>
+    <string name="package_name">com.salescoach.app</string>
+    <string name="custom_url_scheme">com.salescoach.app</string>
+</resources>
