@@ -24,15 +24,19 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Install root deps
-        run: npm install
+        run: |
+          cd client && npm install
+          cd ../server && npm install
+          cd ..
 
       - name: Build Web
-        run: npm run build:web
+        run: |
+          cd client && npx vite build
+          cd ../server && node bundle.js
 
       - name: Build APK
         run: |
           cd client
-          npm install
           npx cap sync android
           cd android
           chmod +x ./gradlew
