@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: sales-coach
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: COZE_TOKEN
+        sync: false
+      - key: COZE_PROJECT_ID
+        sync: false
+      - key: COZE_ENDPOINT
+        sync: false
+      - key: PORT
+        value: "3001"

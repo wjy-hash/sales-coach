@@ -1,0 +1,61 @@
+{
+  "name": "sales-coach",
+  "version": "1.0.0",
+  "description": "销售AI陪练 — AI驱动的销售技能训练桌面应用",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "dev:electron": "cross-env NODE_ENV=development concurrently \"npm run dev:server\" \"npm run dev:client\" \"wait-on http://localhost:5173 && electron .\"",
+    "build:client": "cd client && npx vite build",
+    "build:server": "cd server && node bundle.js",
+    "build": "npm run build:client && npm run build:server",
+    "dist": "npm run build && electron-builder --win",
+    "dist:dir": "npm run build && electron-builder --win --dir",
+    "build:web": "npm run build:client && npm run build:server",
+    "dist:cloud": "npm run build:web && cross-env CLOUD_URL=http://localhost:3001 electron-builder --win",
+    "mobile:init": "cd client && npm run build && npx cap sync",
+    "mobile:ios": "cd client && npm run build && npx cap sync && npx cap open ios",
+    "mobile:android": "cd client && npm run build && npx cap sync && npx cap open android"
+  },
+  "build": {
+    "appId": "com.sales-coach.app",
+    "productName": "销售AI陪练",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron/**/*",
+      "server/dist/**/*",
+      "client/dist/**/*"
+    ],
+    "asar": false,
+    "extraMetadata": {
+      "main": "electron/main.js"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "销售AI陪练"
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "electron": "^28.2.0",
+    "electron-builder": "^24.13.3",
+    "wait-on": "^7.2.0"
+  }
+}

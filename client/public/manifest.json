@@ -1,0 +1,17 @@
+{
+  "name": "销售AI陪练",
+  "short_name": "AI陪练",
+  "description": "AI驱动的销售技能训练平台",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f5",
+  "theme_color": "#1677ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ]
+}
