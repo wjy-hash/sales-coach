@@ -5,8 +5,7 @@ const config: CapacitorConfig = {
   appName: '销售AI陪练',
   webDir: 'dist',
   server: {
-    // Cloud backend URL — change this when deploying to your own server
-    url: 'https://ellen-andrea-establishment-cover.trycloudflare.com',
+    url: 'https://run-kentucky-rna-counsel.trycloudflare.com',
     cleartext: false,
   },
   android: {
