@@ -23,22 +23,20 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install root deps
+      - name: Build Frontend
         run: |
-          cd client && npm install
-          cd ../server && npm install
-          cd ..
+          cd client
+          npm install
+          npx vite build
 
-      - name: Build Web
-        run: |
-          cd client && npx vite build
-          cd ../server && node bundle.js
-
-      - name: Build APK
+      - name: Sync Capacitor
         run: |
           cd client
           npx cap sync android
-          cd android
+
+      - name: Build APK
+        run: |
+          cd client/android
           chmod +x ./gradlew
           ./gradlew assembleDebug
 
